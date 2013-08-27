@@ -2,11 +2,10 @@
 
 #include "ofMain.h"
 #include "Particle.h"
-
 #include "ofxStats.h"
 
 class testApp : public ofSimpleApp{
-	
+    
 public:
     
     void setup();

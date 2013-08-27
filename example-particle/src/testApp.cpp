@@ -2,10 +2,10 @@
 
 void testApp::setup(){
     // init screen
-	ofSetVerticalSync(true);
-	ofBackground(63);
-	ofEnableBlendMode(OF_BLENDMODE_ADD);
-	img.loadImage("particle32.png");
+    ofSetVerticalSync(true);
+    ofBackground(63);
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    img.loadImage("particle32.png");
     
     // create ofxStats object
     stats = new ofxStats();
@@ -29,13 +29,13 @@ void testApp::update(){
 
 void testApp::draw(){
     // draw particle
-	ofSetColor(255, 255, 255);
-	for (int i = 0; i < particles.size(); i++){
-		float posx = particles[i].pos.x - 16;
-		float posy = particles[i].pos.y - 16;
+    ofSetColor(255, 255, 255);
+    for (int i = 0; i < particles.size(); i++){
+        float posx = particles[i].pos.x - 16;
+        float posy = particles[i].pos.y - 16;
         float posz = particles[i].pos.z;
-		img.draw(posx, posy, posz);
-	}
+        img.draw(posx, posy, posz);
+    }
     
     // draw stats
     stats->draw();
@@ -46,12 +46,12 @@ void testApp::draw(){
 }
 
 void testApp::keyPressed  (int key){
-	if (key == 'c') {
-		particles.clear();
-	}
-	if (key == 'f') {
-		ofToggleFullscreen();
-	}
+    if (key == 'c') {
+        particles.clear();
+    }
+    if (key == 'f') {
+        ofToggleFullscreen();
+    }
 }
 
 void testApp::keyReleased  (int key){
