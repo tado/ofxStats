@@ -8,7 +8,7 @@ public:
     void update();
     void draw();
     void mousePressed(int x, int y, int button);
-    void setPosition(float top, float left);
+    void setPosition(float left, float top);
     void setSize(float width, float height);
     void setMaxValue(float maxValue);
     void setLapTime(float lapTime);
