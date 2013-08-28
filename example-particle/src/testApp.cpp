@@ -11,12 +11,12 @@ void testApp::setup(){
     stats = new ofxStats();
 
     // set stats position and size
-    stats->setPosition(5, 25);
+    stats->setPosition(5, 5);
     stats->setSize(120, 50);
     // set maximun varlue of graph
     stats->setMaxValue(110);
     // set lap time to update graph (milliseconds)
-    stats->setLapTime(400);
+    stats->setLapTime(100);
 }
 
 void testApp::update(){
@@ -46,12 +46,15 @@ void testApp::draw(){
     
     // draw help
     ofSetColor(255);
-    ofDrawBitmapString("[c]: clear particles, [f]: toggle fullscreen ", 5, 15);
+    ofDrawBitmapString("[c]: clear, [d]: pop_back, [f]: toggle fullscreen, particle num = " + ofToString(particles.size(),0), 5, ofGetHeight()-10);
 }
 
 void testApp::keyPressed  (int key){
     if (key == 'c') {
         particles.clear();
+    }
+    if (key == 'd') {
+        particles.pop_back();
     }
     if (key == 'f') {
         ofToggleFullscreen();
@@ -65,7 +68,7 @@ void testApp::mouseMoved(int x, int y ){
 }
 
 void testApp::mouseDragged(int x, int y, int button){
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 4; i++) {
         Particle myParticle;
         float vx = ofRandom(-1, 1);
         float vy = ofRandom(-1, 1);
@@ -76,6 +79,7 @@ void testApp::mouseDragged(int x, int y, int button){
 }
 
 void testApp::mousePressed(int x, int y, int button){
+    stats->mousePressed(x, y, button);
 }
 
 void testApp::mouseReleased(){
