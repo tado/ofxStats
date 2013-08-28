@@ -79,6 +79,7 @@ void testApp::mouseDragged(int x, int y, int button){
 }
 
 void testApp::mousePressed(int x, int y, int button){
+    // click to change mode (fps / ms)
     stats->mousePressed(x, y, button);
 }
 
