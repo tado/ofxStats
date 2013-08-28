@@ -4,7 +4,7 @@
 
 class Particle {
 public:
-	
+    
     ofVec3f pos;
     ofVec3f vel;
     ofVec3f frc;

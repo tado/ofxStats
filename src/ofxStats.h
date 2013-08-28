@@ -11,8 +11,7 @@ public:
     void setSize(float width, float height);
     void setMaxValue(float maxValue);
     void setLapTime(float lapTime);
-
-private:
+    
     int lastLap;
     float top;
     float left;
@@ -20,5 +19,7 @@ private:
     float height;
     float maxValue;
     int lapTime;
+
+private:
     deque<float> fpsList;
 };

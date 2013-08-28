@@ -1,8 +1,8 @@
 #include "Particle.h"
 
 Particle::Particle(){
-	setInitialCondition(0,0,0,0,0,0);
-	damping = 0.01f;
+    setInitialCondition(0,0,0,0,0,0);
+    damping = 0.01f;
 }
 
 void Particle::resetForce(){
@@ -19,12 +19,12 @@ void Particle::addDampingForce(){
 
 void Particle::setInitialCondition(float px, float py, float pz, float vx, float vy, float vz){
     pos.set(px,py,pz);
-	vel.set(vx,vy,vz);
+    vel.set(vx,vy,vz);
 }
 
 void Particle::update(){
-	vel = vel + frc;
-	pos = pos + vel;
+    vel = vel + frc;
+    pos = pos + vel;
 }
 
 void Particle::draw(){
