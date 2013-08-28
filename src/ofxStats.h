@@ -8,16 +8,16 @@ public:
     void update();
     void draw();
     void mousePressed(int x, int y, int button);
-    void setPosition(float left, float top);
-    void setSize(float width, float height);
+    void setPosition(int left, int top);
+    void setSize(int width, int height);
     void setMaxValue(float maxValue);
     void setLapTime(float lapTime);
     void setMode(int mode);
     
-    float top;
-    float left;
-    float width;
-    float height;
+    int top;
+    int left;
+    int width;
+    int height;
     float maxValue;
     int lapTime;
     int mode; //(0:fps, 1:ms)

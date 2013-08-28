@@ -19,12 +19,12 @@ void ofxStats::update(){
     if (int(ofGetElapsedTimef() * 1000) / lapTime > lastLap) {
         
         fpsList.push_front(curretFps);
-        if (fpsList.size() > width) {
+        if (fpsList.size() > width - padding * 2 + 1) {
             fpsList.pop_back();
         }
         
         msList.push_front(currentMs);
-        if (msList.size() > width) {
+        if (msList.size() > width - padding * 2 + 1) {
             msList.pop_back();
         }
         
@@ -35,28 +35,26 @@ void ofxStats::update(){
 void ofxStats::draw(){
     ofPushStyle();
     ofPushMatrix();
-    ofTranslate(left+padding, top+padding);
+    ofTranslate(left, top);
     ofEnableAlphaBlending();
     
     ofSetColor(0, 0, 0, 204);
-    ofRect(-padding, -padding, width+padding*2+1, height+padding*2+1);
-    float scale = float(height - 14) / maxValue;
-    
-    // draw graph
-    ofSetLineWidth(1);
+    ofRect(0, 0, width, height);
+    float scale = float(height - 14 - padding*2) / maxValue;
+
     if (mode == 0) { // FPS
         ofSetHexColor(0x00ffff);
 
         ofBeginShape();
-        ofVertex(width, height);
+        ofVertex(width-padding, height-padding);
         for (int i = 0; i < fpsList.size(); i++) {
             float length = fpsList[i] * scale;
             if (length > height) {
                 length = height;
             }
-            ofVertex(width - i, height - length);
+            ofVertex(width - padding - i, height - padding - length);
         }
-        ofVertex(width - fpsList.size() + 1, height);
+        ofVertex(width - padding - fpsList.size() + 1, height - padding);
         ofEndShape();
          
         ofSetColor(0, 0, 0, 204);
@@ -68,15 +66,15 @@ void ofxStats::draw(){
         ofSetHexColor(0x00ff00);
         
         ofBeginShape();
-        ofVertex(width, height);
+        ofVertex(width-padding, height-padding);
         for (int i = 0; i < msList.size(); i++) {
             float length = msList[i] * scale;
             if (length > height) {
                 length = height;
             }
-            ofVertex(width - i, height - length);
+            ofVertex(width - padding - i, height - padding - length);
         }
-        ofVertex(width - msList.size() + 1, height);
+        ofVertex(width - padding - msList.size() + 1, height - padding);
         ofEndShape();
         
         ofSetColor(0, 0, 0, 204);
@@ -96,12 +94,12 @@ void ofxStats::mousePressed(int x, int y, int button){
 }
 
 
-void ofxStats::setPosition(float _left, float _top){
+void ofxStats::setPosition(int _left, int _top){
     left = _left;
     top = _top;
 }
 
-void ofxStats::setSize(float _width, float _height){
+void ofxStats::setSize(int _width, int _height){
     width = _width;
     height = _height;
 }
