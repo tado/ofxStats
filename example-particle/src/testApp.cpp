@@ -9,10 +9,14 @@ void testApp::setup(){
     
     // create ofxStats object
     stats = new ofxStats();
-    
+
     // set stats position and size
     stats->setPosition(5, 25);
     stats->setSize(120, 50);
+    // set maximun varlue of graph
+    stats->setMaxValue(110);
+    // set lap time to update graph (milliseconds)
+    stats->setLapTime(400);
 }
 
 void testApp::update(){
