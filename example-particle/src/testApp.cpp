@@ -2,7 +2,6 @@
 
 void testApp::setup(){
     // init screen
-    ofSetVerticalSync(true);
     ofBackground(63);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     img.loadImage("particle32.png");
@@ -14,7 +13,7 @@ void testApp::setup(){
     stats->setPosition(5, 5);
     stats->setSize(120, 50);
     // set maximun varlue of graph
-    stats->setMaxValue(110);
+    stats->setMaxValue(120);
     // set lap time to update graph (milliseconds)
     stats->setLapTime(100);
 }
@@ -54,7 +53,11 @@ void testApp::keyPressed  (int key){
         particles.clear();
     }
     if (key == 'd') {
-        particles.pop_back();
+        for (int i = 0; i < 4; i++) {
+            if (particles.size() > 0) {
+                particles.pop_back();
+            }
+        }
     }
     if (key == 'f') {
         ofToggleFullscreen();
