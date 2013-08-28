@@ -8,6 +8,7 @@
 ofxStats::ofxStats():top(0), left(0), width(80), height(48), maxValue(120), lapTime(100), mode(0){
     lastLap = 0;
     lastMs = 0;
+    padding = 3;
 }
 
 void ofxStats::update(){
@@ -18,12 +19,12 @@ void ofxStats::update(){
     if (int(ofGetElapsedTimef() * 1000) / lapTime > lastLap) {
         
         fpsList.push_front(curretFps);
-        if (fpsList.size() > width - 5) {
+        if (fpsList.size() > width) {
             fpsList.pop_back();
         }
         
         msList.push_front(currentMs);
-        if (msList.size() > width - 5) {
+        if (msList.size() > width) {
             msList.pop_back();
         }
         
@@ -34,27 +35,30 @@ void ofxStats::update(){
 void ofxStats::draw(){
     ofPushStyle();
     ofPushMatrix();
-    ofTranslate(left, top);
+    ofTranslate(left+padding, top+padding);
     ofEnableAlphaBlending();
-    ofDisableSmoothing();
     
     ofSetColor(0, 0, 0, 204);
-    ofRect(0, 0, width, height);
+    ofRect(-padding, -padding, width+padding*2+1, height+padding*2+1);
     float scale = float(height - 14) / maxValue;
     
     // draw graph
-    ofSetLineWidth(2);
+    ofSetLineWidth(1);
     if (mode == 0) { // FPS
         ofSetHexColor(0x00ffff);
+
+        ofBeginShape();
+        ofVertex(width, height);
         for (int i = 0; i < fpsList.size(); i++) {
             float length = fpsList[i] * scale;
-            if (length > height - 4) {
-                length = height - 4;
+            if (length > height) {
+                length = height;
             }
-            int startX = width - 3;
-            int startY = height - 2;
-            ofLine(startX - i, startY, startX - i, startY - length);
+            ofVertex(width - i, height - length);
         }
+        ofVertex(width - fpsList.size() + 1, height);
+        ofEndShape();
+         
         ofSetColor(0, 0, 0, 204);
         ofRect(0, 0, width, 14);
         ofSetHexColor(0x00ffff);
@@ -62,15 +66,19 @@ void ofxStats::draw(){
     }
     if (mode == 1) { // MS
         ofSetHexColor(0x00ff00);
+        
+        ofBeginShape();
+        ofVertex(width, height);
         for (int i = 0; i < msList.size(); i++) {
             float length = msList[i] * scale;
-            if (length > height - 4) {
-                length = height - 4;
+            if (length > height) {
+                length = height;
             }
-            int startX = width - 3;
-            int startY = height - 2;
-            ofLine(startX - i, startY, startX - i, startY - length);
+            ofVertex(width - i, height - length);
         }
+        ofVertex(width - msList.size() + 1, height);
+        ofEndShape();
+        
         ofSetColor(0, 0, 0, 204);
         ofRect(0, 0, width, 14);
         ofSetHexColor(0x00ff00);

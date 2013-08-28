@@ -29,4 +29,5 @@ private:
     float currentMs;
     float curretFps;
     float lastMs;
+    float padding;
 };
