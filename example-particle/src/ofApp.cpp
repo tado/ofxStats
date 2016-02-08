@@ -1,6 +1,6 @@
-#include "testApp.h"
+#include "ofApp.h"
 
-void testApp::setup(){
+void ofApp::setup(){
     // init screen
     ofBackground(63);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
@@ -18,7 +18,7 @@ void testApp::setup(){
     stats->setLapTime(100);
 }
 
-void testApp::update(){
+void ofApp::update(){
     // update partciles
     for (int i = 0; i < particles.size(); i++) {
         particles[i].resetForce();
@@ -30,7 +30,7 @@ void testApp::update(){
     stats->update();
 }
 
-void testApp::draw(){
+void ofApp::draw(){
     // draw particle
     ofSetColor(255, 255, 255);
     for (int i = 0; i < particles.size(); i++){
@@ -48,7 +48,7 @@ void testApp::draw(){
     ofDrawBitmapString("[c]: clear, [d]: pop_back, [f]: toggle fullscreen, particle num = " + ofToString(particles.size(),0), 5, ofGetHeight()-10);
 }
 
-void testApp::keyPressed  (int key){
+void ofApp::keyPressed  (int key){
     if (key == 'c') {
         particles.clear();
     }
@@ -64,13 +64,13 @@ void testApp::keyPressed  (int key){
     }
 }
 
-void testApp::keyReleased  (int key){
+void ofApp::keyReleased  (int key){
 }
 
-void testApp::mouseMoved(int x, int y ){
+void ofApp::mouseMoved(int x, int y ){
 }
 
-void testApp::mouseDragged(int x, int y, int button){
+void ofApp::mouseDragged(int x, int y, int button){
     for (int i = 0; i < 4; i++) {
         Particle myParticle;
         float vx = ofRandom(-1, 1);
@@ -81,10 +81,10 @@ void testApp::mouseDragged(int x, int y, int button){
     }
 }
 
-void testApp::mousePressed(int x, int y, int button){
+void ofApp::mousePressed(int x, int y, int button){
     // click to change mode (fps / ms)
     stats->mousePressed(x, y, button);
 }
 
-void testApp::mouseReleased(){
+void ofApp::mouseReleased(){
 }

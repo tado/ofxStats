@@ -39,7 +39,7 @@ void ofxStats::draw(){
     ofEnableAlphaBlending();
     
     ofSetColor(0, 0, 0, 204);
-    ofRect(0, 0, width, height);
+    ofDrawRectangle(0, 0, width, height);
     float scale = float(height - 14 - padding*2) / maxValue;
 
     if (mode == 0) { // FPS
@@ -58,7 +58,7 @@ void ofxStats::draw(){
         ofEndShape();
          
         ofSetColor(0, 0, 0, 204);
-        ofRect(0, 0, width, 14);
+        ofDrawRectangle(0, 0, width, 14);
         ofSetHexColor(0x00ffff);
         ofDrawBitmapString(ofToString(curretFps, 0) + " fps", 2, 11);
     }
@@ -78,7 +78,7 @@ void ofxStats::draw(){
         ofEndShape();
         
         ofSetColor(0, 0, 0, 204);
-        ofRect(0, 0, width, 14);
+        ofDrawRectangle(0, 0, width, 14);
         ofSetHexColor(0x00ff00);
         ofDrawBitmapString(ofToString(currentMs, 0) + " ms", 2, 11);
     }

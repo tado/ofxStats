@@ -4,7 +4,7 @@
 #include "Particle.h"
 #include "ofxStats.h"
 
-class testApp : public ofSimpleApp{
+class ofApp : public ofSimpleApp{
     
 public:
     
